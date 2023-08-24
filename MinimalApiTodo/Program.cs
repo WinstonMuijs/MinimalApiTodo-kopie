@@ -109,18 +109,6 @@ app.MapGet("/items", [Authorize] async (ApiDbContext db) =>
     return items;
 });
 
-//app.MapPost("/items", [Authorize] async (ApiDbContext db, Item item) =>
-//{
-//    if (await db.Items.FirstOrDefaultAsync(x => x.Id == item.Id) != null)
-//    {
-//        return Results.BadRequest();
-//    }
-
-//    db.Items.Add(item);
-//    await db.SaveChangesAsync();
-//    return Results.Created($"/Items/{item.Id}", item);
-
-//});
 
 app.MapPost("/items", [Authorize] async (ApiDbContext db, Item item) =>
 {
@@ -234,37 +222,6 @@ class Item
     public bool IsCompleted { get; set; }
 }
 
-//class ItemRespository
-//{
-//    private Dictionary<int, Item> items = new Dictionary<int, Item>();
-
-//    public ItemRespository()
-//    {
-//        var item1 = new Item(1, "Go to the Gym", false);
-//        var item2 = new Item(2, "Drink water", true);
-//        var item3 = new Item(3, "Watch tv", false);
-
-//        items.Add(item1.id, item1);
-//        items.Add(item2.id, item2);
-//        items.Add(item3.id, item3);
-//    }
-
-//    public IEnumerable<Item> GetAll() => items.Values;
-
-//    public Item GetById(int id) {
-//        if (items.ContainsKey(id))
-//        {
-//            return items[id];
-//        }
-//        return null;
-//    }
-
-//    public void Add(Item item) => items.Add(item.id, item);
-
-//    public void Update(Item item) => items[item.id] = item;
-
-//    public void Delete(int id) => items.Remove(id);
-//}
 
 class ApiDbContext : DbContext
 {
